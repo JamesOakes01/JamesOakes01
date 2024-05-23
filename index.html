@@ -6,6 +6,13 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <style>
+        .embed-container {
+            max-width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,9 +31,10 @@
             <h2>Featured Content</h2>
             <p>This is the featured content of your homepage.</p>
         </section>
-        <div data-iframe-width="400" data-iframe-height="500" data-share-badge-id="29e28348-048f-496e-a232-88993a37ba36"
-            data-share-badge-host="https://www.credly.com"></div>
-        <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+        <div class="embed-container">
+            <div data-iframe-width="300" data-iframe-height="540" data-share-badge-id="29e28348-048f-496e-a232-88993a37ba36" data-share-badge-host="https://www.credly.com"></div>
+            <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+        </div>
     </main>
 
     <footer>
@@ -34,5 +42,6 @@
     </footer>
 </body>
 </html>
+
 
 
