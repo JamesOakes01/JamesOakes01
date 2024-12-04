@@ -1,3 +1,9 @@
+---
+layout: default
+title: About
+---
+
+
 # Test Markdown file
 I will be testing markdown
 
