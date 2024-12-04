@@ -126,7 +126,9 @@ I was taking snapshots in VMware which allowed me to go back easily. By the time
 
 ## Configure Networking
 1. created the hostname file with ```nano /etc/hostname``` I entered ```JoArch``` in the file and save+closed it.
-I got stuck here because I had no internet. I didn't have a network manager and couldn't connect to the internet.
+I got stuck here because I had no internet. I didn't have a network manager and couldn't connect to the internet.  
+I eventually got it worked out. The network adapter ens33 is up with an ip address. [see ip-address]  
+![Alt text](images/arch/ip-address.png "optional title")
 
 
 ## Install zsh
@@ -153,9 +155,12 @@ zsh is now successfully installed and is the default shell
 Set both to be *GraceHopper1906* as a temporary password
 6. Make the instructor accounts change their password at next login by running ```sudo chage -d 0 justin``` and ```sudo chage -d 0 codi```
 7. Edit sudoers file to allow wheel group to use sudo. first switch to root user. then run ```EDITOR=nano visudo```
-then uncomment the line for the wheel group.
+then uncomment the line for the wheel group. [see sudoers-file screenshot]
 8. also add a user account for myself ```useradd -m -G wheel james```
 9. set my own password with ```passwd james```
+
+I modified the sudoers file to allow the wheel group to use sudo. I set all three of the new user accounts I made to be in the wheel group.
+![Alt text](images/arch/sudoers-file.png "optional title")
 
 I tested the required password change on my own user account to ensure it worked. It worked great. [see password-change screenshot]  
 ![Alt text](images/arch/change-password.png "optional title")
@@ -204,6 +209,13 @@ Enjoy the new colors!
 3. Add one to the ping command to default the number of packets to 5. run ```alias ping='ping -c 5'```
 [see ping-alias screenshot]  
 ![Alt text](images/arch/ping-alias.png "optional title")
+
+## AUR Packages
+I want to install Google Chrome from the AUR. I also want to install something to make it easier - yay. yay is one of the most popular packages on the AUR.
+1. Install git with ```sudo pacman -S git```
+2. To be able to run makepkg we need some dependencies. Get them with ```sudo pacman -S base-devel```
+3. clone the yay repo with ```git clone https://aur.archlinux.org/yay.git``` then run ```cd yay``` then ```makepkg -si```
+4. install chrome using yay with ```yay -S google-chrome```
 
 ## Arch Linux Project complete!
 You're all done! Time to celebrate and enjoy your Arch VM.
