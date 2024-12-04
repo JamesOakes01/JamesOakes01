@@ -14,17 +14,20 @@ As directed in the instructions, I will start with some challenges/choices and a
 
 ## Step 1: Read The F*cking Manual (RTFM)
 1. I started with reading the Arch Linux Installation Guide which immediately brought be to the FAQ page.
-https://wiki.archlinux.org/title/Installation_guide [see FAQ screenshot]
+https://wiki.archlinux.org/title/Installation_guide
 2. The FAQ brought me to an Arch Linux terminology page where common terms are highlighted
 
 Now that I have read the manual i'm ready to continue.
+![Alt text](images/arch/FAQ-Screenshot.png "optional title")
 
 ## Step 2: Downloading an install image
 1. Go to https://archlinux.org/download/
 2. Scroll down to United States section if doing a direct download and not a torrent/magnet
 3. Choose a site to download from. I chose mit.edu as an educational institution, it seemed like a good choice.
-4. As requested in the instrucitons, I pinged mit.edu and all packets arrived thus I had a 0% packet loss. [See ping screenshot]
-5. Choose a specific file to download. I choose the regular .iso file. There were other options with .sig, .torrent, .tar.zst, .sig, etc. I'm not familiar with all of these file types so I chose the one I knew. Also several of them were compressed types and I didn't want a compressed one. [see mit-download image]
+4. As requested in the instrucitons, I pinged mit.edu and all packets arrived thus I had a 0% packet loss.
+![Alt text](images/arch/Ping-Download.png "optional title")
+5. Choose a specific file to download. I choose the regular .iso file. There were other options with .sig, .torrent, .tar.zst, .sig, etc. I'm not familiar with all of these file types so I chose the one I knew. Also several of them were compressed types and I didn't want a compressed one.
+![Alt text](images/arch/mit-downloads.png "optional title")
 
 ## Step 3: Verify ISO image
 Verify the signature of the iso downloaded to ensure it is correct and is not a malicious download.
@@ -46,7 +49,9 @@ so my exact command was:
 and ```Other Linux 5.x kernel 64-bit```
 6. On the Next page, I gave the VM the name ```ArchLinux1``` anticipating that this would not be the last one I have to make. I also choose a location for the VM. I leave this on the default which is ```C:\Users\[user]\Documents\Virtual Machines\[VM Name]```
 7. **Specify Disk Capacity:** I allocated 20GB of disk space. I also opted to ```Store virtual disk as a single file``` instead of ```Split virtual disk into multiple files``` which was NOT the default. I chose this because it seemed more simple to me.
-8. **Customize Hardware:** I went to customize the hardware to increase the amount of RAM available to 2GB (2048 MB). [See customize hardware screenshot] and [see hardware screenshot]
+8. **Customize Hardware:** I went to customize the hardware to increase the amount of RAM available to 2GB (2048 MB). [See customize hardware screenshot] and [see hardware screenshot]  
+![Alt text](images/arch/cusomize-hardware.png "optional title")
+![Alt text](images/arch/hardware.png "optional title")
 9. Choose finish.
 10. Power on VM.
 
@@ -55,7 +60,9 @@ and ```Other Linux 5.x kernel 64-bit```
 2. Choose ```Power on this virual machine```
 3. I closed a popup from VMware informing me that I had side channel mitigations enabled for enhanced security
 4. I see the install screen for Arch Linux. I am presented with several options [see arch-boot screenshot]. I didn't choose an option quick enough and automatic boot began.
-5. After a few seconds of booting, I am now at a root command line. [see root-cli]
+![Alt text](images/arch/arch-boot-select.png "optional title")
+5. After a few seconds of booting, I am now at a root command line. [see root-cli]  
+![Alt text](images/arch/root-cli.png "optional title")
 
 ## Step 6: Change to UEFI
 - I noticed that I was in BIOS mode and not UEFI or EFI. As noted in the harvey instructions, I edited the .vmx file to add ```firmware="efi"``` as line 2. As noted in the documentation, I verified my boot mode with ```cat /sys/firmware/efi/fw_platform_size``` and since the file didn't exist, it meant I was in BIOS boot mode.
@@ -74,7 +81,8 @@ and ```Other Linux 5.x kernel 64-bit```
 4. choose GPT as partition table type
 5. Create a partition (sda1) for EFI with 500MB. Make sure to modify the partition type to EFI
 6. Create another partition (sda2) with the remaining space and ensure its type is linux filesystem.
-[see partition-table screenshot]
+[see partition-table screenshot]  
+![Alt text](images/arch/partition-table.png "optional title")
 7. Write partition table.
 8. Format each parition with different filesystems:
 run ```mkfs.fat -F32 /dev/sda1``` to format the sda1 with FAT32 and ```mkfs.ext4 /dev/sda2``` with ext4
@@ -103,15 +111,18 @@ I originally missed this and had to go back to the live installation to fix it.
 1. ```pacman -S NetworkManager```
 2. ```systemctl enable NetworkManager```
 
-I was taking snapshots in VMware which allowed me to go back easily. By the time I finished, my snapshot tree looked like this: [see vmware-snapshots screenshot]
+I was taking snapshots in VMware which allowed me to go back easily. By the time I finished, my snapshot tree looked like this: [see vmware-snapshots screenshot]  
+![Alt text](images/arch/vmware-snapshots.png "optional title")
 
 ## Installation Continued
 1. ```exit```
 2. ```umount -R /mnt```
 3. ```reboot```
-4. Choose ```Arch Linux``` in GNU GRUB screen [see boot-arch screenshot]
+4. Choose ```Arch Linux``` in GNU GRUB screen [see boot-arch screenshot]  
+![Alt text](images/arch/boot-arch.png "optional title")
 
-[see arch-first-boot screenshot]
+[see arch-first-boot screenshot]  
+![Alt text](images/arch/arch-first-boot.png "optional title")
 
 ## Configure Networking
 1. created the hostname file with ```nano /etc/hostname``` I entered ```JoArch``` in the file and save+closed it.
@@ -124,7 +135,8 @@ As directed in the assignment, I will be installing a different shell other than
 2. ```pacman -S zsh```
 3. install which with ```pacman -S which```
 4. To make zsh the default shell run ```chsh -s /usr/bin/zsh```
-[see changed-shell screenshot]
+[see changed-shell screenshot]  
+![Alt text](images/arch/changed-shell.png "optional title")
 5. ```nano /etc/default/useradd``` modify the SHELL variable. Change it from bash to zsh
 
 zsh is now successfully installed and is the default shell
@@ -145,7 +157,8 @@ then uncomment the line for the wheel group.
 8. also add a user account for myself ```useradd -m -G wheel james```
 9. set my own password with ```passwd james```
 
-I tested the required password change on my own user account to ensure it worked. It worked great. [see password-change screenshot]
+I tested the required password change on my own user account to ensure it worked. It worked great. [see password-change screenshot]  
+![Alt text](images/arch/change-password.png "optional title")
 
 ## Step 6: Installing Desktop Environment GNOME
 1. install GNOME with ```sudo pacman -S gnome```
@@ -155,15 +168,17 @@ I tested the required password change on my own user account to ensure it worked
 5. reboot
 
 Enjoy a desktop environment!
-[see desktop-environment screenshot]
+[see desktop-environment screenshot]  
+![Alt text](images/arch/desktop-environment.png "optional title")
 
 ## Install ssh
 1. Install OpenSSH by running ```sudo pacman -S openssh```
-2. enable the ssh system service by running ```sudo systemctl enable sshd``. On thing I want to note here is that the d on the end of sshd is for daemon. It is starting the daemon for openssh. Similar to systemd, networkd, etc.
-3. Start the ssh system service by running ```sudo systemctl start sshd``
+2. enable the ssh system service by running ```sudo systemctl enable sshd```. On thing I want to note here is that the d on the end of sshd is for daemon. It is starting the daemon for openssh. Similar to systemd, networkd, etc.
+3. Start the ssh system service by running ```sudo systemctl start sshd```
 
 SSH is now working!
-[see ssh-arch screenshot]
+[see ssh-arch screenshot]  
+![Alt text](images/arch/ssh-arch.png "optional title")
 
 ## Add color coding to terminal
 - I installed firefox with ```pacman -S firefox```
@@ -178,14 +193,17 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_c
 4. reboot
 
 Enjoy the new colors!
-[see terminal-color screenshot]
+[see terminal-color screenshot]  
+![Alt text](images/arch/terminal-color.png "optional title")
 
 ## Add aliases
 1. Add one for ls so that is shows color by default. run ```alias ls='ls --color=auto'```
-[see ls-alias]
+[see ls-alias]  
+![Alt text](images/arch/ls-alias.png "optional title")
 2. Add an alias to mkdir command so that it automatically creates parent directory when needed. run ```alias mkdir='mkdir -pv'```
 3. Add one to the ping command to default the number of packets to 5. run ```alias ping='ping -c 5'```
-[see ping-alias screenshot]
+[see ping-alias screenshot]  
+![Alt text](images/arch/ping-alias.png "optional title")
 
 ## Arch Linux Project complete!
 You're all done! Time to celebrate and enjoy your Arch VM.
