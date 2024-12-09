@@ -20,7 +20,7 @@ Create with
 ## Step 4: Create docker-compose.yml file
 1. ```nano docker-compose.yml```
 2. Add the following to the docker compose yml file:
-~~~
+```yaml
 services:
   db:
     # We use a mariadb image which supports both amd64 & arm64 architecture
@@ -54,8 +54,8 @@ services:
 volumes:
   db_data:
   wp_data:
-  ~~~
-  
+  ```
+
   3. Save and close
 
   ## Step 5: Start Docker Compose
