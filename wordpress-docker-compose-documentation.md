@@ -58,25 +58,25 @@ volumes:
   wp_data:
   ```
 
-  3. Save and close
+Save and close
 
-  ## Step 5: Start Docker Compose
-  run
-  ```docker compose up -d```
+## Step 5: Start Docker Compose
+run
+```docker compose up -d```
 
-  ## Step 6: Verify WordPress is working
-  1. Open a web browser in the VM.
-  2. Go to localhost
-  3. If the wordpress site is there, then success.   
-  
+## Step 6: Verify WordPress is working
+1. Open a web browser in the VM.
+2. Go to localhost
+3. If the wordpress site is there, then success.   
 
-  ![Alt text](images/docker-compose/wordpress.png "optional title")
 
-  ## Issues encountered:
-  I encountered some odd issues with this process. I took almost double the time it took to do everything else as I took to troubleshoot this issue. Whenever I ran ```docker compose up -d``` it would report an unknown flag. I would then remove it and it would then say unknown command `compose`. I was very confused by this and it took quite some time to get everything sorted out. It seems like the version of ubuntu that I was using was too new or something because the version `noble` that I was using wouldn't work. I had to manually install docker compose add ons and utils by using the older `jammy` version. This took about 45 minutes to solve.
+![Alt text](images/docker-compose/wordpress.png "optional title")
 
-  ## Documentation followed:
-  As suggested in the assignment, awesome-compose github was a great resource. https://github.com/docker/awesome-compose
+## Issues encountered:
+I encountered some odd issues with this process. I took almost double the time it took to do everything else as I took to troubleshoot this issue. Whenever I ran ```docker compose up -d``` it would report an unknown flag. I would then remove it and it would then say unknown command `compose`. I was very confused by this and it took quite some time to get everything sorted out. It seems like the version of ubuntu that I was using was too new or something because the version `noble` that I was using wouldn't work. I had to manually install docker compose add ons and utils by using the older `jammy` version. This took about 45 minutes to solve.
 
-  Specifically, I followed the guide at:
-  https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
+## Documentation followed:
+As suggested in the assignment, awesome-compose github was a great resource. https://github.com/docker/awesome-compose
+
+Specifically, I followed the guide at:
+https://github.com/docker/awesome-compose/blob/master/official-documentation-samples/wordpress/README.md
