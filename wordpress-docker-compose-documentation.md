@@ -18,8 +18,10 @@ Create with
 ```cd wordpress```
 
 ## Step 4: Create docker-compose.yml file
-1. ```nano docker-compose.yml```
-2. Add the following to the docker compose yml file:
+1. ```nano docker-compose.yml```  
+
+Add the following to the docker compose yml file:  
+
 ```yaml
 services:
   db:
